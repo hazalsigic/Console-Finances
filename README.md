@@ -1,7 +1,7 @@
 # Console - Finances
 
 ## Description
-This web application has been created to analyse the financial records of a company including the total amount of Profit/Losses, Greatest increase and decrease in profit/losses.
+This web application has been created to analyse the financial records of a company including the total amount of Profit/Losses, Greatest increase and decrease in profit/losses throught JavaScript.
 
 ## Installation
 N/A
