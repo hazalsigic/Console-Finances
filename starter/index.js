@@ -86,16 +86,17 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
-//Total months//
-var totalMonths = finances.length;
+
+//Total months
+var totalNumberOfMonths = finances.length;
 console.log("Financial Analysis");
 console.log("--------------");
-console.log("Total Months: " + totalMonths);
+console.log("Total Months: " + totalNumberOfMonths);
 
-//Total Profit/Losses//
+//Total Profit/Losses
 var totalProfits = 0;
 var totalChange = 0;
-var profitChange = 0;
+
 
 
 for (var i = 0; i < finances.length; i++) {
@@ -106,13 +107,34 @@ for (var i = 0; i < finances.length; i++) {
 }
 console.log("Total: $" + totalProfits);
 
-//Average of Changes//
+//Average of Changes
+var totalProfitChange = 0;
+var greatestIncrease = 0;
+var greatestDecrease = 0;
+var greatestIncreaseMonth;
+var greatestDecreaseMonth;
 
- for (var i = 1; i < totalMonths; i++) {
-  var profitChange = finances[i][1] - finances[i - 1][1];
+ for (var i = 1; i < totalNumberOfMonths; i++) {
+  var thisMonthProfit = finances [i][1];
+  var lastMonthProfit = finances [i - 1][1];
+  var profitChange = thisMonthProfit- lastMonthProfit;
+
+  totalProfitChange = totalProfitChange + profitChange;
+
+  if (profitChange > greatestIncrease) {
+    greatestIncrease = profitChange;
+    greatestIncreaseMonth = finances [i];
+  }
+  if (profitChange < greatestDecrease) {
+    greatestDecrease = profitChange;
+    greatestDecreaseMonth = finances [i];
+  }
 
 }
 
-console.log("Average Change: " + profitChange / (finances.length - 1));
+var averageProfitChange = totalProfitChange / (finances.length - 1);
 
+console.log("Average Change: " + (averageProfitChange).toFixed(2));
 
+console.log("Greatest Increase in Profits/Losses: " + greatestIncreaseMonth[0] + " (" + greatestIncrease + ")");
+console.log("Greatest Decrease in Profits/Losses: " + greatestDecreaseMonth[0] + " (" + greatestDecrease + ")");
